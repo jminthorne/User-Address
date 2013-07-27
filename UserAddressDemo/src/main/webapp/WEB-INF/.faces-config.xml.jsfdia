@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#chooseYourPath.xhtml"
+  PATH="/chooseYourPath.xhtml" SHAPE="161,108,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#chooseYourPath.xhtml:0" NAME="item"
+   PATH="/chooseYourPath.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID=":#{apprenticeInformationBean.startApprenticeInformationProcess}:#enterCustomerInformation.xhtml"
+    NAME="output" PATH="/enterCustomerInformation.xhtml"
+    TARGET="rules:#enterCustomerInformation.xhtml"
+    TITLE="#{apprenticeInformationBean.startApprenticeInformationProcess}:[any]" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#enterCustomerInformation.xhtml"
+  PATH="/enterCustomerInformation.xhtml" SHAPE="403,111,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+</PROCESS>

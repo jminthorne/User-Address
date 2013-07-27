@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="welcomeForm">
+		<h:panelGrid>
+			<f:facet name="header">
+				<h:panelGroup style="display:block; text-align:center">
+					<h:outputText
+						value="Please enter your username and then select an option:" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<br />
+					UserName:
+					<h:inputText id="csrName"
+						value="#{customerInformationBean.csrName}" />
+					<br />
+				</h:panelGroup>
+			</f:facet>
+			<f:facet name="footer">
+				<h:panelGroup style="display:block; text-align:center">
+					<h:commandButton action="enterCustomerInformation?faces-redirect=true" value="Continue" />
+					<h:commandButton value="Check Tasks"
+						action="#{customerInformationBean.checkTasks}" />
+				</h:panelGroup>
+			</f:facet>
+		</h:panelGrid>
+		<h:dataTable id="tasksGrid" value="#{customerInformationBean.tasks}"
+			var="task" border="1">
+			<h:column border="1">
+				<f:facet name="header">Task Name</f:facet>
+				<h:outputText value="#{task.name}" />
+			</h:column>
+			<h:column border="1">
+				<f:facet name="header">Task Status</f:facet>
+				<h:outputText value="#{task.status}" />
+			</h:column>
+			<h:column border="1">
+				<f:facet name="header">Task Start Date</f:facet>
+				<h:outputText value="#{task.activationTime}" border="1"/>
+			</h:column>
+			<h:column border="1">
+				<f:facet name="header">Action</f:facet>
+				<h:commandLink value="Start"
+					action="#{customerInformationBean.startTask(task)}" />
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>

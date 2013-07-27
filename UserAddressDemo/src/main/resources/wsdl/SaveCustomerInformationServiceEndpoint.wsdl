@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://theforce.org/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://www.theforce.org/"
+	name="SaveCustomerInformationServiceEndpoint" targetNamespace="http://theforce.org/">
+	<wsdl:import location="http://localhost:8080/customer-information/SaveCustomerInformationServiceEndpoint?wsdl=SaveCusotmerInformation.wsdl"
+		namespace="http://www.theforce.org/"></wsdl:import>
+	<wsdl:binding name="SaveCustomerInformationServiceEndpointSoapBinding" type="ns1:SaveCusotmerInformation">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="saveCustomerInforamtion">
+			<soap:operation soapAction="" style="rpc" />
+			<wsdl:input name="saveCustomerInforamtion">
+				<soap:body namespace="http://www.theforce.org/" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="saveCustomerInforamtionResponse">
+				<soap:body namespace="http://www.theforce.org/" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="SaveCustomerInformationServiceEndpoint">
+		<wsdl:port binding="tns:SaveCustomerInformationServiceEndpointSoapBinding" name="SaveCustomerInformationPort">
+			<soap:address location="http://localhost:8080/customer-information/SaveCustomerInformationServiceEndpoint" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

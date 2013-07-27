@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Class-Path: cxf-rt-frontend-jaxrs-2.7.0.jar cxf-api-2.7.0.jar woodstox
+ -core-asl-4.1.4.jar stax2-api-3.1.1.jar xmlschema-core-2.0.3.jar gero
+ nimo-javamail_1.4_spec-1.7.1.jar wsdl4j-1.6.2.jar cxf-rt-core-2.7.0.j
+ ar jaxb-impl-2.1.13.jar javax.ws.rs-api-2.0-m10.jar cxf-rt-bindings-x
+ ml-2.7.0.jar cxf-rt-transports-http-2.7.0.jar jackson-core-asl-1.8.6.
+ jar jackson-mapper-asl-1.8.6.jar jackson-jaxrs-1.8.6.jar spring-web-3
+ .0.6.RELEASE.jar aopalliance-1.0.jar spring-beans-3.0.6.RELEASE.jar s
+ pring-core-3.0.6.RELEASE.jar spring-asm-3.0.6.RELEASE.jar commons-log
+ ging-1.1.1.jar spring-context-3.0.6.RELEASE.jar spring-aop-3.0.6.RELE
+ ASE.jar spring-expression-3.0.6.RELEASE.jar javaee-6.0-alpha-1.jar de
+ ployment-api-1.2-rev-1.jar ejb-api-3.0-alpha-1.jar transaction-api-1.
+ 1-rev-1.jar jaxrpc-api-1.1.jar persistence-api-1.0-rev-1.jar servlet-
+ api-3.0-alpha-1.jar jms-api-1.1-rev-1.jar security-api-1.1-rev-1.jar 
+ connector-api-1.6-alpha-1.jar jsr250-api-1.0.jar jsr181-api-1.0-MR1.j
+ ar saaj-api-1.3.jar activation-1.1-rev-1.jar jaxws-api-2.2.8.jar jaxb
+ -api-2.1.jar stax-api-1.0-2.jar mail-1.4-rev-1.jar jsp-api-2.1-rev-1.
+ jar jsf-api-1.2_08.jar jstl-api-1.2-rev-1.jar management-api-1.1-rev-
+ 1.jar ejb3-persistence-1.0.2.GA.jar hibernate-core-4.1.7.Final.jar an
+ tlr-2.7.7.jar jboss-logging-3.1.0.GA.jar jboss-transaction-api_1.1_sp
+ ec-1.0.0.Final.jar dom4j-1.6.1.jar hibernate-jpa-2.0-api-1.0.1.Final.
+ jar javassist-3.15.0-GA.jar hibernate-commons-annotations-4.0.1.Final
+ .jar hibernate-entitymanager-4.1.7.Final.jar javax.inject-1.jar slf4j
+ -log4j12-1.6.6.jar slf4j-api-1.6.6.jar log4j-1.2.17.jar resteasy-mave
+ n-import-1.1.GA.pom javax.annotation-3.1.1.jar
+

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.omg.org/bpmn20"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <itemDefinition id="_enteredFirstNameItem" structureRef="String" />
+  <itemDefinition id="_enteredLastNameItem" structureRef="String" />
+  <itemDefinition id="_enteredNickNameItem" structureRef="String" />
+  <itemDefinition id="_enteredAddressLine1Item" structureRef="String" />
+  <itemDefinition id="_enteredAddressLine2Item" structureRef="String" />
+  <itemDefinition id="_enteredCityItem" structureRef="String" />
+  <itemDefinition id="_enteredStateItem" structureRef="String" />
+  <itemDefinition id="_enteredZipcodeItem" structureRef="String" />
+  <itemDefinition id="_enteredCustomerNumberItem" structureRef="String" />
+  <itemDefinition id="_enteredEmployeeItem" structureRef="String" />
+
+  <process processType="Private" isExecutable="true" id="zipCodeValidation" name="UserAddressDemo" tns:packageName="customerInformation" tns:version="1.0" >
+
+    <!-- process variables -->
+    <property id="enteredFirstName" itemSubjectRef="_enteredFirstNameItem"/>
+    <property id="enteredLastName" itemSubjectRef="_enteredLastNameItem"/>
+    <property id="enteredNickName" itemSubjectRef="_enteredNickNameItem"/>
+    <property id="enteredAddressLine1" itemSubjectRef="_enteredAddressLine1Item"/>
+    <property id="enteredAddressLine2" itemSubjectRef="_enteredAddressLine2Item"/>
+    <property id="enteredCity" itemSubjectRef="_enteredCityItem"/>
+    <property id="enteredState" itemSubjectRef="_enteredStateItem"/>
+    <property id="enteredZipcode" itemSubjectRef="_enteredZipcodeItem"/>
+    <property id="enteredCustomerNumber" itemSubjectRef="_enteredCustomerNumberItem"/>
+    <property id="enteredEmployee" itemSubjectRef="_enteredEmployeeItem"/>
+
+    <!-- nodes -->
+    <startEvent id="_1" name="StartProcess" />
+    <userTask id="_21" name="Enter Customer Number" >
+      <extensionElements>
+        <tns:onEntry-script scriptFormat="http://www.java.com/java">
+          <tns:script>//Assign customer number
+System.out.println("\nThe customer number is being entered");</tns:script>
+        </tns:onEntry-script>
+        <tns:onExit-script scriptFormat="http://www.java.com/java">
+          <tns:script>//Assigned customer number assigned
+System.out.println("The customer number was assigned\n");</tns:script>
+        </tns:onExit-script>
+      </extensionElements>
+      <ioSpecification>
+        <dataInput id="_21_CommentInput" name="Comment" />
+        <dataInput id="_21_SkippableInput" name="Skippable" />
+        <dataInput id="_21_LocaleInput" name="Locale" />
+        <dataInput id="_21_TaskNameInput" name="TaskName" />
+        <dataInput id="_21_GroupIdInput" name="GroupId" />
+        <dataOutput id="_21_enteredCustomerNumberOutput" name="enteredCustomerNumber" />
+        <inputSet>
+          <dataInputRefs>_21_CommentInput</dataInputRefs>
+          <dataInputRefs>_21_SkippableInput</dataInputRefs>
+          <dataInputRefs>_21_LocaleInput</dataInputRefs>
+          <dataInputRefs>_21_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_21_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>_21_enteredCustomerNumberOutput</dataOutputRefs>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_21_CommentInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Please enter the customer number: </from>
+          <to xsi:type="tFormalExpression">_21_CommentInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_21_SkippableInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">false</from>
+          <to xsi:type="tFormalExpression">_21_SkippableInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_21_LocaleInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">en-UK</from>
+          <to xsi:type="tFormalExpression">_21_LocaleInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_21_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">enterCustomerNumber</from>
+          <to xsi:type="tFormalExpression">_21_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_21_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">administrator</from>
+          <to xsi:type="tFormalExpression">_21_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataOutputAssociation>
+        <sourceRef>_21_enteredCustomerNumberOutput</sourceRef>
+        <targetRef>enteredCustomerNumber</targetRef>
+      </dataOutputAssociation>
+    </userTask>
+    <endEvent id="_20" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <exclusiveGateway id="_24" name="zcGateway" gatewayDirection="Diverging" />
+    <endEvent id="_11" name="Validate_Enter_End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <userTask id="_15" name="Verify Customer Information" >
+      <extensionElements>
+        <tns:onEntry-script scriptFormat="http://www.java.com/java">
+          <tns:script>//Verify Customer Information
+System.out.println("Verfiying Customer Information....\n");</tns:script>
+        </tns:onEntry-script>
+        <tns:onExit-script scriptFormat="http://www.java.com/java">
+          <tns:script>//Customer information was verified
+System.out.println("\nThe customer information was verified");</tns:script>
+        </tns:onExit-script>
+      </extensionElements>
+      <ioSpecification>
+        <dataInput id="_15_CommentInput" name="Comment" />
+        <dataInput id="_15_SkippableInput" name="Skippable" />
+        <dataInput id="_15_LocaleInput" name="Locale" />
+        <dataInput id="_15_TaskNameInput" name="TaskName" />
+        <dataInput id="_15_GroupIdInput" name="GroupId" />
+        <inputSet>
+          <dataInputRefs>_15_CommentInput</dataInputRefs>
+          <dataInputRefs>_15_SkippableInput</dataInputRefs>
+          <dataInputRefs>_15_LocaleInput</dataInputRefs>
+          <dataInputRefs>_15_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_15_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_15_CommentInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Please enter verify the customer information: </from>
+          <to xsi:type="tFormalExpression">_15_CommentInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_15_SkippableInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">false</from>
+          <to xsi:type="tFormalExpression">_15_SkippableInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_15_LocaleInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">en-UK</from>
+          <to xsi:type="tFormalExpression">_15_LocaleInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_15_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">VerifyCustomerInformation</from>
+          <to xsi:type="tFormalExpression">_15_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_15_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">administrator</from>
+          <to xsi:type="tFormalExpression">_15_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+    </userTask>
+
+    <!-- connections -->
+    <sequenceFlow id="_24-_21" sourceRef="_24" targetRef="_21" name="Customer Number" tns:priority="1" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >System.out.println("The zip code "+enteredZipcode +" is valid: true");
+if(enteredZipcode.equalsIgnoreCase("28203"))
+{
+	return true;
+}else{
+	return false;
+}
+</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_21-_20" sourceRef="_21" targetRef="_20" />
+    <sequenceFlow id="_1-_24" sourceRef="_1" targetRef="_24" />
+    <sequenceFlow id="_15-_11" sourceRef="_15" targetRef="_11" />
+    <sequenceFlow id="_24-_15" sourceRef="_24" targetRef="_15" name="Verify" tns:priority="2" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >System.out.println("The zip code " +enteredZipcode +" is valid: false");
+
+if(enteredZipcode.equalsIgnoreCase("28203")){
+	return false;
+}else{
+	return true;
+}</conditionExpression>
+    </sequenceFlow>
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="zipCodeValidation" >
+      <bpmndi:BPMNShape bpmnElement="_1" >
+        <dc:Bounds x="204" y="104" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_21" >
+        <dc:Bounds x="311" y="209" width="189" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_20" >
+        <dc:Bounds x="575" y="210" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_24" >
+        <dc:Bounds x="382" y="108" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_11" >
+        <dc:Bounds x="583" y="18" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_15" >
+        <dc:Bounds x="308" y="17" width="202" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_24-_21" >
+        <di:waypoint x="406" y="132" />
+        <di:waypoint x="405" y="233" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_21-_20" >
+        <di:waypoint x="405" y="233" />
+        <di:waypoint x="599" y="234" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_1-_24" >
+        <di:waypoint x="228" y="128" />
+        <di:waypoint x="406" y="132" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_15-_11" >
+        <di:waypoint x="409" y="41" />
+        <di:waypoint x="607" y="42" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_24-_15" >
+        <di:waypoint x="406" y="132" />
+        <di:waypoint x="409" y="41" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

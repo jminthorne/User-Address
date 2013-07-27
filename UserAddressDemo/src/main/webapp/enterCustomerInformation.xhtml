@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/master.css"
+		media="screen" />
+	<script type='text/javascript' src="/js/enterCustomerInformation.js"></script>
+</h:head>
+<h:body styleClass="body">
+	<h:form id="enterCustomerInformationForm">
+		<h:panelGrid columns="2">
+			<f:facet name="header">
+				<h:outputText value="Customer Information" />
+			</f:facet>
+			<h:panelGrid id="customernformationFieldsGrid" columns="2">
+				<h:outputLabel for="firstName" value="First Name:" />
+				<h:inputText id="firstName"  value="#{customerInformationBean.selectedCustomer.firstName}" />
+				<h:outputLabel for="lastName" value="Last Name:" />
+				<h:inputText id="lastName"  value="#{customerInformationBean.selectedCustomer.lastName}"/>
+				<h:outputLabel for="nickname" value="Nickname:" />
+				<h:inputText id="nickname"  value="#{customerInformationBean.selectedCustomer.nickName}"/>
+				
+				<h:outputLabel for="addressLine1" value="Address Line 1:" />
+				<h:inputText id="addressLine1" 
+					value="#{customerInformationBean.selectedAddress.addressLine1}" />
+				<h:outputLabel for="addressLine2" value="Address Line 2:" />
+				<h:inputText id="addressLine2" 
+					value="#{customerInformationBean.selectedAddress.addressLine2}" />
+				<h:outputLabel for="city" value="City:" />
+				<h:inputText id="city"  value="#{customerInformationBean.selectedAddress.city}" />
+				<h:outputLabel for="state" value="State:" />
+				<h:inputText id="state"  value="#{customerInformationBean.selectedAddress.state}" />
+				<h:outputLabel for="zipcode" value="Zip code:" />
+				<h:inputText id="zipcode"  value="#{customerInformationBean.selectedAddress.zip}" />
+			</h:panelGrid>
+			<f:facet name="footer">
+				<h:panelGroup style="display:block; text-align:center">
+					<h:commandButton id="submit" value="Submit" action="#{customerInformationBean.startCustomerInformationProcess}" />
+				</h:panelGroup>
+			</f:facet>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

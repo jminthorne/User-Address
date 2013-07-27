@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/master.css"
+		media="screen" />
+	<script type='text/javascript' src="/js/enterCustomerNumber.js"></script>
+</h:head>
+<h:body>
+	<h:form id="enterCustomerNumberForm">
+		<h:panelGrid columns="1">
+			<ui:include src="readOnly.xhtml" />
+			<h:outputLabel for="customerNumber" value="Customer Number:" />
+			<h:inputText id="customerNumber" styleClass="textbox"
+				label="Customer Number"
+				value="#{customerInformationBean.selectedCustomer.customerNumber}" />
+			<f:facet name="footer">
+				<h:panelGroup style="display:block; text-align:center">
+					<h:commandButton id="saveInformation" value="Save Information"
+						action="#{customerInformationBean.finishCustomerNumber}" />
+				</h:panelGroup>
+			</f:facet>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

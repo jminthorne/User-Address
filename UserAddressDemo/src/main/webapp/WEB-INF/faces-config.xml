@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+	<navigation-rule>
+		<from-view-id>/enterCustomerInformation.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{customerInformationBean.startCustomerInformationProcess}</from-action>
+			<from-outcome>true</from-outcome>
+			<to-view-id>/welcome.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/verifyCustomerInformation.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{customerInformationBean.finishVerify}</from-action>
+			<from-outcome>true</from-outcome>
+			<to-view-id>/welcome.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/enterCustomerNumber.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{customerInformationBean.finishCustomerNumber}</from-action>
+			<from-outcome>true</from-outcome>
+			<to-view-id>/welcome.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/welcome.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{customerInformationBean.startTask(task)}</from-action>
+			<from-outcome>enterCustomerNumber</from-outcome>
+			<to-view-id>/enterCustomerNumber.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{customerInformationBean.startTask(task)}</from-action>
+			<from-outcome>Verify Customer Information</from-outcome>
+			<to-view-id>/verifyCustomerInformation.xhml</to-view-id>
+			<redirect />
+		</navigation-case>
+	
+	</navigation-rule>
+</faces-config>
